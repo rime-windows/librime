@@ -67,6 +67,71 @@ Build and install librime on Linux
 make
 sudo make install
 ```
+Another build method on ubuntu
+```
+sudo apt install pkg-config -y
+sudo apt install capnproto -y
+sudo apt install libcapnp-dev -y
+sudo apt install libboost-all-dev -y
+sudo apt install libgoogle-glog-dev -y
+sudo apt install libyaml-cpp-dev -y
+sudo apt install libmarisa-dev -y
+sudo apt install libgtest-dev -y
+sudo apt install libsnappy-dev -y
+sudo apt install libopencc-dev -y
+sudo apt install libleveldb-dev -y
+
+git clone --recurse-submodules https://github.com/rime-windows/librime.git
+mkdir librime/build
+cd librime/build
+rm -rf * && cmake .. && make && ls && sudo make install
+```
+
+Build on Windows
+===
+1. download and install `VS 2019` from [Microsoft Visual Studio site](https://visualstudio.microsoft.com/downloads/)
+2. install [cmake](https://cmake.org/)
+3. install [git](https://git-scm.com/), then clone `vcpkg` source code and install required libraries on `D disk (d:/vcpkg)`
+```
+d:
+cd /
+git clone https://github.com/microsoft/vcpkg.git
+cd d:/vcpkg
+bootstrap-vcpkg.bat
+
+vcpkg integrate install
+
+vcpkg install boost:x86-windows boost:x64-windows
+vcpkg install gtest:x86-windows gtest:x64-windows
+vcpkg install gflags:x86-windows gflags:x64-windows
+vcpkg install glog:x86-windows glog:x64-windows
+vcpkg install opencc:x86-windows opencc:x64-windows
+vcpkg install openssl:x86-windows openssl:x64-windows
+vcpkg install yaml-cpp:x86-windows yaml-cpp:x64-windows
+vcpkg install zlib:x86-windows zlib:x64-windows
+vcpkg install zstd:x86-windows zstd:x64-windows
+```
+4. clone librime source code to `d:/librime/`
+```
+d:
+cd /
+git clone --recurse-submodules https://github.com/rime-windows/librime.git
+```
+5. use `cmake` generate the build environment.
+```
+d:
+mkdir d:/librime/build
+cd d:/librime/build
+cmake .. -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake
+```
+6. open `Visual Studio 2019 Developer Command Prompt`, then build librime with it.
+```
+d:
+cd d:/librime/build
+devenv rime.sln /build debug
+devenv rime.sln /build debug
+```
+7. done
 
 Frontends
 ===

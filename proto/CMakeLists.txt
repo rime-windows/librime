@@ -11,6 +11,8 @@ capnp_generate_cpp(
 message(STATUS "compiled capnproto schemata (sources): ${CAPNP_SRCS}")
 message(STATUS "compiled capnproto schemata (headers): ${CAPNP_HDRS}")
 
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/src/capnproto/c++/src )
+
 add_library(rime-proto-objs OBJECT ${CAPNP_SRCS})
 target_include_directories(rime-proto-objs PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 if(BUILD_SHARED_LIBS)
