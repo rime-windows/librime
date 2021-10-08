@@ -74,6 +74,7 @@ endif()
 if(BUILD_SHARED_LIBS)
   add_library(rime ${rime_src})
   target_link_libraries(rime ${rime_deps})
+  target_include_directories(rime PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
   set_target_properties(rime PROPERTIES
     DEFINE_SYMBOL "RIME_EXPORTS"
     VERSION ${rime_version}

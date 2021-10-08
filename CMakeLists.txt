@@ -4,6 +4,10 @@
 project(rime)
 cmake_minimum_required(VERSION 3.10)
 
+if(COMMAND cmake_policy)
+  cmake_policy(SET CMP0003 NEW)
+endif(COMMAND cmake_policy)
+
 set(rime_version 1.7.3)
 set(rime_soversion 1)
 
@@ -75,11 +79,7 @@ if(Boost_FOUND)
   link_directories(${Boost_LIBRARY_DIRS})
 endif()
 
-if (MSVC)
-add_subdirectory(thirdparty/src/capnproto)
-else()
 find_package(CapnProto REQUIRED)
-endif()
 
 if(ENABLE_LOGGING)
 
@@ -110,9 +110,14 @@ if(BUILD_TEST)
   endif()
 endif()
 
+if (MSVC)
+find_package(yaml-cpp CONFIG REQUIRED)
+set(YamlCpp_LIBRARY yaml-cpp)
+else()
 find_package(YamlCpp REQUIRED)
 if(YamlCpp_FOUND)
   include_directories(${YamlCpp_INCLUDE_PATH})
+endif()
 endif()
 
 if (MSVC)

@@ -108,6 +108,7 @@ vcpkg install glog:x86-windows glog:x64-windows
 vcpkg install opencc:x86-windows opencc:x64-windows
 vcpkg install openssl:x86-windows openssl:x64-windows
 vcpkg install yaml-cpp:x86-windows yaml-cpp:x64-windows
+vcpkg install capnproto:x86-windows capnproto:x64-windows
 vcpkg install zlib:x86-windows zlib:x64-windows
 vcpkg install zstd:x86-windows zstd:x64-windows
 ```
@@ -122,7 +123,7 @@ git clone --recurse-submodules https://github.com/rime-windows/librime.git
 d:
 mkdir d:/librime/build
 cd d:/librime/build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake
+cmake .. -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake -DENABLE_LOGGING=OFF -DBUILD_TEST=OFF
 ```
 6. open `Visual Studio 2019 Developer Command Prompt`, then build librime with it.
 ```
