@@ -79,7 +79,7 @@ if(Boost_FOUND)
   link_directories(${Boost_LIBRARY_DIRS})
 endif()
 
-find_package(CapnProto REQUIRED)
+add_subdirectory(thirdparty/src/capnproto)
 
 if(ENABLE_LOGGING)
 

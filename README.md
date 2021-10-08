@@ -70,8 +70,6 @@ sudo make install
 Another build method on ubuntu
 ```
 sudo apt install pkg-config -y
-sudo apt install capnproto -y
-sudo apt install libcapnp-dev -y
 sudo apt install libboost-all-dev -y
 sudo apt install libgoogle-glog-dev -y
 sudo apt install libyaml-cpp-dev -y
@@ -84,7 +82,7 @@ sudo apt install libleveldb-dev -y
 git clone --recurse-submodules https://github.com/rime-windows/librime.git
 mkdir librime/build
 cd librime/build
-rm -rf * && cmake .. && make && ls && sudo make install
+rm -rf * && cmake .. -DENABLE_LOGGING=OFF -DBUILD_TEST=OFF && make && ls && sudo make install
 ```
 
 Build on Windows
@@ -108,7 +106,6 @@ vcpkg install glog:x86-windows glog:x64-windows
 vcpkg install opencc:x86-windows opencc:x64-windows
 vcpkg install openssl:x86-windows openssl:x64-windows
 vcpkg install yaml-cpp:x86-windows yaml-cpp:x64-windows
-vcpkg install capnproto:x86-windows capnproto:x64-windows
 vcpkg install zlib:x86-windows zlib:x64-windows
 vcpkg install zstd:x86-windows zstd:x64-windows
 ```
