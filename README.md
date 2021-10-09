@@ -127,7 +127,7 @@ cmake .. -DCMAKE_TOOLCHAIN_FILE=D:/vcpkg/scripts/buildsystems/vcpkg.cmake -DENAB
 d:
 cd d:/librime/build
 devenv rime.sln /build debug
-devenv rime.sln /build debug
+devenv rime.sln /build release
 ```
 7. done
 
